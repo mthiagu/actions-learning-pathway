@@ -35,8 +35,16 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Auto-generate ESLint config if missing
+        run: |
+          if [ ! -f .eslintrc.json ]; then
+            echo '{
+              "extends": "next/core-web-vitals"
+            }' > .eslintrc.json
+          fi
+
       - name: Run ESLint
-        run: npm run lint
+        run: npx next lint
 
   test:
     needs: lint
