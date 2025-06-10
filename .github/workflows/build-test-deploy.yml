@@ -33,7 +33,7 @@ jobs:
           node-version: '18.x'
 
       - name: Install dependencies
-        run: npm install
+        run: npm install --save-dev eslint
 
       - name: Auto-generate ESLint config if missing
         run: |
